@@ -1,5 +1,7 @@
 package com.gofar.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.hibernate.Query;
@@ -11,30 +13,6 @@ import com.gofar.domain.Category;
 import com.gofar.service.CategoryService;
 import com.gofar.utils.HibernateSessionFactory;
 
-public class CategoryServiceImpl implements CategoryService {
-
-
-
-	private SessionFactory sf ;
-
-	public SessionFactory getSf() {
-		return sf;
-	}
-
-	public void setSf(SessionFactory sf) {
-		this.sf = sf;
-	}
-
-
-
-	public void update(Category c) {
-		if (sf == null) {
-			System.out.println("sf 为空");
-		}
-		Session session = sf.openSession();	
-		Transaction tx = session.beginTransaction();
-		session.save(c);
-		tx.commit();
-	}
+public class CategoryServiceImpl extends BaseServiceImpl<Category> implements CategoryService {
 
 }

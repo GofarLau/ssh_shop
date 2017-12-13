@@ -7,6 +7,7 @@
 		<action name="categoryAction_*" class="categoryACtion" method="{1}">
 			<result name="index">/index.jsp</result>
 			<result name="success">/success.jsp</result>
+			<result name="test">/test.jsp</result>
 		</action>
 	</package>
 </struts>

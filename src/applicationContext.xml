@@ -47,13 +47,18 @@
 	
 	<!-- action -->
 	<bean name="categoryACtion" class="com.gofar.web.action.CategoryAction">
-		<property name="cs" ref="categoryService"></property>
 	</bean>
 	
 	<!-- service -->
-	<bean name="categoryService" class="com.gofar.service.impl.CategoryServiceImpl">
+	<bean name="categoryService" class="com.gofar.service.impl.CategoryServiceImpl" parent="baseService">
+	</bean>														<!-- 泛型类不能初始化  需要添加lazy-init 属性 -->
+	<bean name="baseService" class="com.gofar.service.impl.BaseServiceImpl" lazy-init="true" >
 		<property name="sf" ref="sessionFactory"></property>
 	</bean>
 	
 	<!-- dao -->
+	
+	
+	<!-- 开启注解 -->
+	<!-- <context:component-scan base-package="扫描的包名"></context:component-scan> -->
 </beans>
