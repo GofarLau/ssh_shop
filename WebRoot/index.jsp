@@ -21,6 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+		<a href="${pageContext.request.contextPath}/categoryAction_update?c.type='laji'&c.hot=false">保存类型</a>
   </body>
+  
 </html>

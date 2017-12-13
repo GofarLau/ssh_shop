@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd ">
+
+	<!-- spring 读取db.properties文件 -->
+	<context:property-placeholder location="classpath:db.properties"/>
+	
+	<!-- spring配置c3p0对象 -->
+	<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+		<property name="driverClass" value="${jdbc.driverClass}"></property>
+		<property name="user" value="${jdbc.user}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean>
+	
+	<!-- 配置sessionFactory  -->
+	<bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 加载hibernate 配置文件 --> 
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+	</bean>
+	
+	<!-- 配置事务管理器 -->
+	<bean name="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 配置通知advice -->
+	<tx:advice id="myAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- REQUIRED表示如果存在事务，则支持当前的事务，如果没有则创建一个新的事务 -->
+			<!-- SUPPORTS表示如果存在事务，则支持当前的事务，如果没有就算了 -->
+			<tx:method name="save*"   propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="delete*" propagation="REQUIRED"/>
+			<tx:method name="*"       propagation="SUPPORTS"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置aop切面 -->
+	<aop:config>
+		<!-- 配置切点 也就是哪些包需要切入事务 -->
+		<aop:pointcut expression="execution(* com.gofar.service.impl.*.*(..))" id="pointcut"/>
+		<!-- 配置切面   也就是 切点 加上 通知-->
+		<aop:advisor advice-ref="myAdvice" pointcut-ref="pointcut"/>
+	</aop:config>
+	
+	
+	<!-- action -->
+	<bean name="categoryACtion" class="com.gofar.web.action.CategoryAction">
+		<property name="cs" ref="categoryService"></property>
+	</bean>
+	
+	<!-- service -->
+	<bean name="categoryService" class="com.gofar.service.impl.CategoryServiceImpl">
+		<property name="sf" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- dao -->
+</beans>
