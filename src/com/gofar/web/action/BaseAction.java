@@ -4,15 +4,31 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+import org.springframework.test.annotation.Commit;
 
+import com.gofar.service.AccountService;
+import com.gofar.service.CategoryService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-
+@Controller("baseAction")
+@Scope("prototype")
 public class BaseAction<T> extends ActionSupport implements RequestAware, SessionAware, ApplicationAware,ModelDriven<T> {
-
+	
+	@Resource(name = "categoryService")
+	protected CategoryService categoryService;
+		
+	@Resource(name = "accountService")
+	protected AccountService accountService;
+	
+	
+	
 	
 	//域对象
 	//通过实现 *Aware 接口  注入 相应的map

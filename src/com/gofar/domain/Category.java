@@ -1,5 +1,9 @@
 package com.gofar.domain;
 
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 /**
  * Category entity. @author MyEclipse Persistence Tools
  */
@@ -9,6 +13,7 @@ public class Category implements java.io.Serializable {
 	// Fields
 
 	private Integer id;
+	private Account account;
 	private String type;
 	private Boolean hot;
 
@@ -19,7 +24,8 @@ public class Category implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Category(String type, Boolean hot) {
+	public Category(Account account, String type, Boolean hot) {
+		this.account = account;
 		this.type = type;
 		this.hot = hot;
 	}
@@ -32,6 +38,16 @@ public class Category implements java.io.Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="account_id")
+	public Account getAccount() {
+		return this.account;
+	}
+	
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	public String getType() {

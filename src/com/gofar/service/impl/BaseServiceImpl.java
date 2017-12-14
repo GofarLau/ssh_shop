@@ -5,14 +5,20 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Service;
 
 import com.gofar.service.BaseService;
-
+@Service("baseService")
+@Lazy(true)
 public class BaseServiceImpl<T> implements BaseService<T> {
 	
+	@Resource(name="sessionFactory")
 	private SessionFactory sf;
 	public void setSf(SessionFactory sf) {
 		this.sf = sf;

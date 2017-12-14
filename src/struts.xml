@@ -4,10 +4,17 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="shop" namespace="/" extends="struts-default">
+	
+		<global-results>
+			<result name="aindex">/aindex.jsp</result>
+		</global-results>
 		<action name="categoryAction_*" class="categoryACtion" method="{1}">
 			<result name="index">/index.jsp</result>
 			<result name="success">/success.jsp</result>
 			<result name="test">/test.jsp</result>
+		</action>
+		<action name="index" class="sendAction" method="execute">
+			<result name="send">/WEB-INF/main/aindex.jsp</result>
 		</action>
 	</package>
 </struts>

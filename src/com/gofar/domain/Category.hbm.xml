@@ -10,6 +10,9 @@
             <column name="id" />
             <generator class="native" />
         </id>
+        <many-to-one name="account" class="com.gofar.domain.Account" fetch="select">
+            <column name="account_id" />
+        </many-to-one>
         <property name="type" type="java.lang.String">
             <column name="type" length="20" />
         </property>
