@@ -13,8 +13,8 @@
 			<result name="success">/success.jsp</result>
 			<result name="test">/test.jsp</result>
 		</action>
-		<action name="index" class="sendAction" method="execute">
-			<result name="send">/WEB-INF/main/aindex.jsp</result>
+		<action name="send_*_*" class="sendAction" method="execute">
+			<result name="send">/WEB-INF/{1}/{2}.jsp</result>
 		</action>
 	</package>
 </struts>

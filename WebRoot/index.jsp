@@ -10,7 +10,7 @@
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<script>window.location.href="${pageContext.request.contextPath }/index.action"</script>
+	<script>window.location.href="${pageContext.request.contextPath }/send_main_aindex.action"</script>
   </head>
   
   <body>
