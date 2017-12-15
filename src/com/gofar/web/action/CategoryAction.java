@@ -1,5 +1,6 @@
 package com.gofar.web.action;
 
+import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 import java.util.List;
 
@@ -7,6 +8,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.gofar.domain.Category;
+
+import javassist.bytecode.ByteArray;
 
 @Controller("categoryAction")
 @Scope("prototype")
@@ -33,5 +36,13 @@ public class CategoryAction extends BaseAction<Category>{
 
 		System.out.println(pageMap);
 		return "jsonMap";
+	}
+	
+	public String deleteByIds(){
+		System.out.println(ids);
+		categoryService.deleteByIds(ids);
+		//如果删除成功  将true 以流的形式传递给前台
+		inputStream = new ByteArrayInputStream("true".getBytes());//将"true"的字节流存到inputstream里面去
+		return "stream";
 	}
 }

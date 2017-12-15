@@ -1,5 +1,6 @@
 package com.gofar.web.action;
 
+import java.io.InputStream;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Map;
@@ -22,6 +23,25 @@ import com.opensymphony.xwork2.ModelDriven;
 public class BaseAction<T> extends ActionSupport implements RequestAware, SessionAware, ApplicationAware,ModelDriven<T> {
 	
 	
+	protected String ids;
+	protected InputStream inputStream;
+	
+	
+	//从前台获得要删除的ids 实现getter 方法  和setter方法
+	//通过流的形式 让struts获得数据 传递给前台  实现getter方法即可
+	public String getIds() {
+		return ids;
+	}
+
+	public void setIds(String ids) {
+		this.ids = ids;
+	}
+
+	public InputStream getInputStream() {
+		return inputStream;
+	}
+
+
 	//page 和rows 分页相关数据  page  当前页  ;rows 每页的大小 pageMap  存储 查询的数据 然后打包成json格式发送给前台
 	//page 和rows  需要实现setter 和getter 方法  从前台获得数据  pageMap只需要实现getter方法  让struts 获得
 	protected Integer page;

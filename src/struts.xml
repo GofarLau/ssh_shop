@@ -21,6 +21,9 @@
 					rows\[\d+\]\.account\.pass,
 				</param>
 			</result>
+			<result name="stream" type="stream">
+				<param name="inputName">inputStream</param>
+			</result>
 		</action>
 	</package>
 </struts>

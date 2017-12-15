@@ -36,4 +36,11 @@ public class CategoryServiceImpl extends BaseServiceImpl<Category> implements Ca
 		return result;
 	}
 
+	@Override
+	public void deleteByIds(String ids) {
+		String hql = "delete from Category c where c.id in ("+ ids +")";
+		getSession().createQuery(hql).executeUpdate();
+		
+	}
+
 }
