@@ -46,9 +46,9 @@
 	
 	
 	<!-- action -->
-	<!-- <bean name="categoryACtion" class="com.gofar.web.action.CategoryAction">
-	</bean>
-	<bean name="sendAction" class="com.gofar.web.action.SendAction">
+ 	<!-- <bean name="categoryACtion" class="com.gofar.web.action.CategoryAction" scope="prototype">
+	</bean> -->
+		<!--<bean name="sendAction" class="com.gofar.web.action.SendAction">
 	</bean> -->
 	
 	

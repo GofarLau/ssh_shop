@@ -21,6 +21,37 @@ import com.opensymphony.xwork2.ModelDriven;
 @Scope("prototype")
 public class BaseAction<T> extends ActionSupport implements RequestAware, SessionAware, ApplicationAware,ModelDriven<T> {
 	
+	
+	//page 和rows 分页相关数据  page  当前页  ;rows 每页的大小 pageMap  存储 查询的数据 然后打包成json格式发送给前台
+	//page 和rows  需要实现setter 和getter 方法  从前台获得数据  pageMap只需要实现getter方法  让struts 获得
+	protected Integer page;
+	protected Integer rows;
+	protected Map<String, Object> pageMap = null;
+	
+	
+	
+	
+	public Integer getPage() {
+		return page;
+	}
+
+	public void setPage(Integer page) {
+		this.page = page;
+	}
+
+	public Integer getRows() {
+		return rows;
+	}
+
+	public void setRows(Integer rows) {
+		this.rows = rows;
+	}
+
+	public Map<String, Object> getPageMap() {
+		return pageMap;
+	}
+
+
 	@Resource(name = "categoryService")
 	protected CategoryService categoryService;
 		
@@ -58,13 +89,14 @@ public class BaseAction<T> extends ActionSupport implements RequestAware, Sessio
 	@Override
 	public T getModel() {
 		//通过传进来的T  new 一个instance  实例化model  
-		ParameterizedType type = (ParameterizedType) this.getClass().getSuperclass().getGenericSuperclass();
-		Class clazz = (Class) type.getActualTypeArguments()[0];
+		ParameterizedType type = (ParameterizedType)this.getClass().getGenericSuperclass();
+		Class clazz = (Class)type.getActualTypeArguments()[0];
 		try {
-			model = (T) clazz.newInstance();
+			model = (T)clazz.newInstance();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
-		}
+		}	
+		
 		return model;
 	}
 

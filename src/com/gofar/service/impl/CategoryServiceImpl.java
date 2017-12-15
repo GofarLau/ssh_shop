@@ -29,4 +29,11 @@ public class CategoryServiceImpl extends BaseServiceImpl<Category> implements Ca
 		return list;
 	}
 
+	@Override
+	public Long getCount(String type) {
+		String hql = "select count(*) from Category c where c.type = :type";
+		Long result = (Long) getSession().createQuery(hql).setString("type", "%"+type+"%").uniqueResult();
+		return result;
+	}
+
 }
