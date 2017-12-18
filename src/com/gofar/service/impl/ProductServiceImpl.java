@@ -34,6 +34,12 @@ public class ProductServiceImpl extends BaseServiceImpl<Product> implements Prod
 		return (Long) getSession().createSQLQuery(sql).setString(0, "%"+name+"%").uniqueResult();*/
 		
 	}
+
+	@Override
+	public void deleteByIds(String ids) {
+		String hql = "delete from Product p where p.id in ("+ids+")";
+		getSession().createQuery(hql).executeUpdate();
+	}
 	
 	
 }

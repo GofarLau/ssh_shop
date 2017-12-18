@@ -1,5 +1,6 @@
 package com.gofar.web.action;
 
+import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,5 +37,15 @@ public class ProductAction extends BaseAction<Product> {
 //      System.out.println(total);  
         pageMap.put("total", total); //存储为JSON格式  
         return "jsonMap";  
+	}
+	
+	
+	public String deleteByIds(){
+		
+		productService.deleteByIds(ids);
+		
+		inputStream = new ByteArrayInputStream("true".getBytes());
+		
+		return "stream";
 	}
 }

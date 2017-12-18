@@ -97,7 +97,7 @@
 							    }
 							    ids = ids.substr(0, ids.lastIndexOf(","));
 							    //2. 发送ajax请求
-							    $.post("product_deleteByIds.action",{ids:ids},function(result){
+							    $.post("productAction_deleteByIds.action",{ids:ids},function(result){
 							    	if(result == "true") {
 							    		//将刚刚选中的记录删除，要不然会影响后面更新的操作
 							    		$("#dg").datagrid("uncheckAll");
@@ -119,6 +119,7 @@
 			},'-',{ //查询按钮不是LinkButton，它有语法，但是也支持解析HTML标签
 				text:"<input id='ss' name='serach' />"
 			}],
+			
 		    rowStyler: function(index,row){
 		    	console.info("index" + index + "," + row)
 		    	if(index % 2 == 0) {
@@ -183,6 +184,7 @@
 		}); 
 	});
 	
+
 	</script>
   </head>
   

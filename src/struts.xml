@@ -47,6 +47,9 @@
 					rows\[\d+\]\.category\.account
 				</param>
 			</result>
+			<result name="stream" type="stream">
+				<param name="inputName">inputStream </param>
+			</result>
 		</action>
 		
 		
