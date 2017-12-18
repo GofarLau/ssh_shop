@@ -17,6 +17,7 @@ import org.springframework.test.annotation.Commit;
 
 import com.gofar.service.AccountService;
 import com.gofar.service.CategoryService;
+import com.gofar.service.ProductService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 @Controller("baseAction")
@@ -88,6 +89,9 @@ public class BaseAction<T> extends ActionSupport implements RequestAware, Sessio
 		
 	@Resource(name = "accountService")
 	protected AccountService accountService;
+	
+	@Resource(name = "productService")
+	protected ProductService productService;
 	
 	
 	

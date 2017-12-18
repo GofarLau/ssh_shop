@@ -40,5 +40,15 @@
 		</action>
 		
 		
+		<action name="productAction_*" class="productAction" method="{1}">
+			<result name="jsonMap" type="json">
+				<param name="root">pageMap</param>
+				<param name="excludeProperties">
+					rows\[\d+\]\.category\.account
+				</param>
+			</result>
+		</action>
+		
+		
 	</package>
 </struts>

@@ -23,6 +23,7 @@
 		<property name="format_sql">true</property>
 		<mapping resource="com/gofar/domain/Category.hbm.xml" />
 		<mapping resource="com/gofar/domain/Account.hbm.xml" />
+		<mapping resource="com/gofar/domain/Product.hbm.xml" />
 
 	</session-factory>
 
