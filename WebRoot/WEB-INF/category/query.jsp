@@ -25,13 +25,18 @@
                 	iconCls:'icon-add',
                 	text:'添加类别',
                 	handler:function(){
-                		alert("add");
+                		 parent.$("#win").window({ //因为<div>放在了aindex.jsp中，所以这里创建窗口要先调用parent  
+                	            title:"添加类别",  
+                	            width:350,  
+                	            height:150,  
+                	            content:'<iframe src="send_category_save.action" frameborder="0" width="100%" height="100%"/>'  
+                	        }); 
                 	}
                 },{
                 	iconCls:'icon-edit',
                 	text:'编辑类别',
 					handler:function(){
-						alert("edit");
+						alert("edit");a
 					}                	
                 },{
                 	iconCls:'icon-remove',
@@ -143,11 +148,16 @@
                 },   
                 prompt:'请输入搜索关键字' //默认的显示  
             }); 
+			
+
 		});
+		
+		
 	</script>
   </head>
   
   <body>
     <table id="dg"></table>
+   
   </body>
 </html>

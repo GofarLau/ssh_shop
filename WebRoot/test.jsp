@@ -8,22 +8,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'test.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
+	<%@include  file="/public/head.jspf"%>
+	<script type="text/javascript">
+	
+	$('#cc').combobox({    
+	    url:'combobox_data.json',    
+	    valueField:'id',    
+	    textField:'text'   
+	});  
+	</script>
+	
   </head>
   
   <body>
-		hello<p>
+	<input id="cc" name="dept" value="aa"> 
   </body>
 </html>

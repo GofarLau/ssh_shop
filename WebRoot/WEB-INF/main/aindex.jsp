@@ -86,7 +86,10 @@
     		此处以后显示相应的系统信息（当前操作系统的类型，当前项目的域名，硬件的相关配置或者显示报表
     		</div>   
     	</div>
-    </div>   
+    </div>
+     <div id="win" data-options="collapsible:false,minimizable:false,maximizable:false,modal:true"></div> 
+    
+       
 </body>  
 
 </html>

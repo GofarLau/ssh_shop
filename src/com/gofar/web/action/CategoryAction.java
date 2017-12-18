@@ -45,4 +45,11 @@ public class CategoryAction extends BaseAction<Category>{
 		inputStream = new ByteArrayInputStream("true".getBytes());//将"true"的字节流存到inputstream里面去
 		return "stream";
 	}
+	
+	public String save (){
+		
+		System.out.println(model);
+		categoryService.save(model);
+		return "";
+	}
 }

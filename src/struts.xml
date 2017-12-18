@@ -25,5 +25,17 @@
 				<param name="inputName">inputStream</param>
 			</result>
 		</action>
+		
+		
+		<action name="accountAction_*" class="accountAction" method="{1}">
+			<result name="jsonList" type="json">
+				<param name="root">jsonList</param>
+				<param name="excludeProperties">
+					\[\d+\]\.pass,\[\d+\]\.name
+				</param>
+			</result>
+		</action>
+		
+		
 	</package>
 </struts>

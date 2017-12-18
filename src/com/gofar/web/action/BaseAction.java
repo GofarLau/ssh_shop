@@ -3,6 +3,7 @@ package com.gofar.web.action;
 import java.io.InputStream;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -23,6 +24,16 @@ import com.opensymphony.xwork2.ModelDriven;
 public class BaseAction<T> extends ActionSupport implements RequestAware, SessionAware, ApplicationAware,ModelDriven<T> {
 	
 	
+	//用来装将来需要被打包成json格式返回给前台的数据  需要实现get方法
+	protected List<T> jsonList = null;
+	
+	
+	
+	public List<T> getJsonList() {
+		return jsonList;
+	}
+
+
 	protected String ids;
 	protected InputStream inputStream;
 	
