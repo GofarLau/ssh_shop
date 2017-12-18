@@ -36,7 +36,33 @@
                 	iconCls:'icon-edit',
                 	text:'编辑类别',
 					handler:function(){
-						alert("edit");a
+					//先判断是否有选中的
+					var rows = $("#dg").datagrid("getSelections"); 
+					if(rows.length == 0){
+						
+						$.messager.show({
+							title:'错误提示',
+							msg:'至少选中一条记录',
+							timeout:2000,
+							showType:'slide'
+						});
+					}else if(rows.length != 1){
+						$.messager.show({
+							title:'错误提示',
+							msg:'每次只能更新一条记录',
+							timeout:2000,
+							showType:'slide'
+						});
+					}else{
+						parent.$("#win").window({ //因为<div>放在了aindex.jsp中，所以这里创建窗口要先调用parent  
+	        	            title:"添加类别",  
+	        	            width:350,  
+	        	            height:150,  
+	        	            content:'<iframe src="send_category_update.action" frameborder="0" width="100%" height="100%"/>'  
+	        	        }); 
+					}
+						
+						
 					}                	
                 },{
                 	iconCls:'icon-remove',

@@ -52,4 +52,10 @@ public class CategoryAction extends BaseAction<Category>{
 		categoryService.save(model);
 		return "";
 	}
+	
+	public String update(){
+		
+		categoryService.update(model);
+		return "";
+	}
 }
