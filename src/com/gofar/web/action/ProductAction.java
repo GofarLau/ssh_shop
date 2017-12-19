@@ -1,6 +1,8 @@
 package com.gofar.web.action;
 
 import java.io.ByteArrayInputStream;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -8,6 +10,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.gofar.domain.Product;
+
+
 
 
 
@@ -48,4 +52,35 @@ public class ProductAction extends BaseAction<Product> {
 		
 		return "stream";
 	}
+	
+	public void save(){
+		
+		model.setDate(new Timestamp(new Date().getTime()));
+		productService.save(model);
+		
+	}
+	public void update(){
+		
+		model.setDate(new Timestamp(new Date().getTime()));
+		productService.save(model);
+		
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,8 @@
 package com.gofar.demo;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.hibernate.Session;
@@ -40,4 +43,5 @@ public class Demo {
 		cs.update(c);
 	}
 	
+
 }

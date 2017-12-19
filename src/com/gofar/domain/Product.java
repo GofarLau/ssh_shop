@@ -128,9 +128,4 @@ public class Product implements java.io.Serializable {
 		this.open = open;
 	}
 
-	@Override
-	public String toString() {
-		return "Product [name=" + name + "]";
-	}
-
 }
