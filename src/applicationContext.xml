@@ -3,6 +3,14 @@
 
 	<!-- spring 读取db.properties文件 -->
 	<context:property-placeholder location="classpath:db.properties"/>
+	<!-- spring 读取properties文件 -->
+	<bean id="prop" class=" org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="locations">
+			<array>
+				<value>classpath:public.properties</value>
+			</array>
+		</property>
+	</bean>
 	
 	<!-- spring配置c3p0对象 -->
 	<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">

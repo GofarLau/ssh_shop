@@ -55,11 +55,19 @@ public class ProductAction extends BaseAction<Product> {
 	
 	public void save(){
 		
+		String pic = fileUpload.uploadFile(fileImage);
+		//获得文件名  并设置产品的文件名
+
+		// 设置时间
 		model.setDate(new Timestamp(new Date().getTime()));
 		productService.save(model);
 		
 	}
 	public void update(){
+		
+		//获得文件名 并设置产品的文件名
+		String pic = fileUpload.uploadFile(fileImage);
+		model.setPic(pic);
 		
 		model.setDate(new Timestamp(new Date().getTime()));
 		productService.save(model);

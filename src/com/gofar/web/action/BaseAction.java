@@ -15,9 +15,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.test.annotation.Commit;
 
+import com.gofar.domain.FileImage;
 import com.gofar.service.AccountService;
 import com.gofar.service.CategoryService;
 import com.gofar.service.ProductService;
+import com.gofar.utils.FileUpload;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 @Controller("baseAction")
@@ -25,6 +27,23 @@ import com.opensymphony.xwork2.ModelDriven;
 public class BaseAction<T> extends ActionSupport implements RequestAware, SessionAware, ApplicationAware,ModelDriven<T> {
 	
 	
+	
+	//封装图片信息的类
+	protected FileImage fileImage;
+	//上传文件工具类
+	@Resource(name="fileUpload")
+	protected FileUpload fileUpload;
+	
+	
+	public FileImage getFileImage() {
+		return fileImage;
+	}
+
+	public void setFileImage(FileImage fileImage) {
+		this.fileImage = fileImage;
+	}
+
+
 	//用来装将来需要被打包成json格式返回给前台的数据  需要实现get方法
 	protected List<T> jsonList = null;
 	
